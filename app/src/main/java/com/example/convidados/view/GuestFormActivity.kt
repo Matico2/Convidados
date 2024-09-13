@@ -1,13 +1,13 @@
-package com.example.convidados
+package com.example.convidados.view
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import com.example.convidados.model.GuestModel
+import com.example.convidados.R
 import com.example.convidados.databinding.ActivityGuestFormBinding
+import com.example.convidados.viewmodel.GuestFormViewmodel
 
 class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -25,7 +25,10 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         if (v.id == R.id.button_confirmation){
-
+        val name = binndig.editName.text.toString()
+            val presence = binndig.radioPresent.isChecked
+            val model = GuestModel(0, name, presence)
+            viewModel.insert(model)
         }
     }
 }
