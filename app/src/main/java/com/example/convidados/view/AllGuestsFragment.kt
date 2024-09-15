@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.convidados.databinding.FragmentAllGuestsBinding
 import com.example.convidados.view.adapter.GuestsAdapter
+import com.example.convidados.view.listener.OnGuestListener
 import com.example.convidados.view.viewholder.GuestViewHolder
 import com.example.convidados.viewmodel.AllGuestsViewModel
 
@@ -25,6 +26,19 @@ class AllGuestsFragment : Fragment() {
         _binding = FragmentAllGuestsBinding.inflate(inflater, container, false)
         binding.recyclerAllGuests.layoutManager = LinearLayoutManager(context)
         binding.recyclerAllGuests.adapter = adapter
+
+        val listener = object : OnGuestListener{
+            override fun onClick(id:Int) {
+
+            }
+
+            override fun onDelete(id: Int) {
+                viewModel.delete(id)
+                viewModel.getAll()
+            }
+
+        }
+        adapter.attachListener(listener)
         viewModel.getAll()
         observe()
         return binding.root
