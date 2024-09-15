@@ -1,9 +1,9 @@
-package com.example.convidados.repository
+package com.example.convidados.service.constanrs.repository
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.convidados.constanrs.DataBaseConstants
+import com.example.convidados.service.constanrs.DataBaseConstants
 
 class GuestDataBase(context: Context) : SQLiteOpenHelper(context, NAME, null, VERSION) {
     companion object {
